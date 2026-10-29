@@ -11,5 +11,8 @@ for (let i = 0; i < 16;i++) {
         };
 };
 
-
-
+document.addEventListener("mouseover", (event) => {
+  if (event.target.classList.contains("divV")) {
+    event.target.classList.add("colored");
+  }
+});
