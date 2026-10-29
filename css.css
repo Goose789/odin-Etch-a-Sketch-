@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.divH {
+    display: flex;
+}
+
+.divV {
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
