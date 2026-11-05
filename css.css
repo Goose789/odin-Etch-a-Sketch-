@@ -7,8 +7,9 @@ body {
     background: linear-gradient(0deg, #FBC2EB 0%, #A6C1EE 100%);;
 }
 
-h1 {
+.title {
     color: white;
+    text-decoration: none;
 }
 
 .container {
