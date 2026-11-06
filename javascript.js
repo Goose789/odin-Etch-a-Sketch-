@@ -18,7 +18,8 @@ createGrid(16,16)
 
 document.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("divV")) {
-        event.target.classList.add("colored");
+        const randomColor = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, "0");
+        event.target.style.backgroundColor = randomColor;
   }
 });
 
