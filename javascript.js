@@ -16,6 +16,17 @@ function createGrid(width,height) {
 
 createGrid(16,16)
 
+let hoverHandler = null;
+
+function replaceHoverHandler(newHandler) {
+    if (hoverHandler) {
+        document.removeEventListener("mouseover", hoverHandler);
+    }
+
+    hoverHandler = newHandler;
+    document.addEventListener("mouseover", hoverHandler);
+}
+
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("newGrid")) {
         const gridWidth = Number(prompt("Enter the width:"));
@@ -37,15 +48,22 @@ document.addEventListener("click", (event) => {
         document.querySelector("#error")?.remove();
         createGrid(gridWidth,gridHeight);
     } else if (event.target.classList.contains("RandomColor")) {
-        const randomColor = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, "0");    
-        document.addEventListener("mouseover", (event) => {
-                if (event.target.classList.contains("divV")) {           
-                    event.target.style.backgroundColor = randomColor;
-            }});
-        } else if (event.target.classList.contains("Plum")) {
-            document.addEventListener("mouseover", (event) => {
-                if (event.target.classList.contains("divV")) {
-                    event.target.style.backgroundColor = "#51427a";
-        }});
+        const randomColor =
+            "#" + Math.floor(Math.random() * 0x1000000)
+                .toString(16)
+                .padStart(6, "0");
+
+        replaceHoverHandler((event) => {
+            if (event.target.classList.contains("divV")) {
+                event.target.style.backgroundColor = randomColor;
+            }
+        });
+
+    } else if (event.target.classList.contains("Plum")) {
+        replaceHoverHandler((event) => {
+            if (event.target.classList.contains("divV")) {
+                event.target.style.backgroundColor = "#51427a";
+            }
+        });
     }
 });
