@@ -16,13 +16,6 @@ function createGrid(width,height) {
 
 createGrid(16,16)
 
-document.addEventListener("mouseover", (event) => {
-    if (event.target.classList.contains("divV")) {
-        const randomColor = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, "0");
-        event.target.style.backgroundColor = randomColor;
-  }
-});
-
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("newGrid")) {
         const gridWidth = Number(prompt("Enter the width:"));
@@ -43,5 +36,16 @@ document.addEventListener("click", (event) => {
         }
         document.querySelector("#error")?.remove();
         createGrid(gridWidth,gridHeight);
+    } else if (event.target.classList.contains("RandomColor")) {
+            document.addEventListener("mouseover", (event) => {
+                if (event.target.classList.contains("divV")) {
+                    const randomColor = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, "0");
+                    event.target.style.backgroundColor = randomColor;
+            }});
+        } else if (event.target.classList.contains("Plum")) {
+            document.addEventListener("mouseover", (event) => {
+                if (event.target.classList.contains("divV")) {
+                    event.target.style.backgroundColor = "#51427a";
+        }});
     }
-})
+});
